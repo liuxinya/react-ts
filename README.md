@@ -7,6 +7,16 @@
 
 ### 启动
 
-* yarn install
+* 项目
 
-* npm start
+  - yarn install
+
+  - npm start
+
+* 假数据
+
+  - cd ./server
+
+  - yarn install
+
+  - npm start
