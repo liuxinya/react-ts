@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/list', function(req, res, next) {
   res.send({
     succ: true,
-    data: '味盎然而非'
+    data: '味盎然而非',
   });
 });
 

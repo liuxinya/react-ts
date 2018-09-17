@@ -10,13 +10,15 @@
     "no-var-keyword": false,
     "prefer-const": false,
     "no-shadowed-variable": false,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "alphabetically": false
   },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+      "coverage/lcov-report/*.js",
+      "server/**/*.js"
     ]
   }
 }
