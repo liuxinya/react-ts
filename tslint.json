@@ -6,7 +6,11 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-unused-vars": false,
-    "jsx-boolean-value": false
+    "jsx-boolean-value": false,
+    "no-var-keyword": false,
+    "prefer-const": false,
+    "no-shadowed-variable": false,
+    "no-var-requires": false
   },
   "linterOptions": {
     "exclude": [

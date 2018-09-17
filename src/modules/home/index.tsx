@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Modal } from '../../component/modal/index';
+import Axios from 'axios';
 export class Home extends React.Component<any, any> {
     constructor(props: any) {
       super(props);
@@ -10,6 +11,10 @@ export class Home extends React.Component<any, any> {
       this.change = this.change.bind(this);
       this.showModal = this.showModal.bind(this);
       this.close = this.close.bind(this);
+      Axios.defaults.baseURL = 'http://localhost:3000';
+      Axios.get('home/list').then(data => {
+        console.log(data);
+      })
     }
     public render() {
       const model =  this.state.showModal? (
