@@ -31,6 +31,10 @@ export class Home extends React.Component<any, any> {
         </div>
       );
     }
+    async componentDidMount() {
+      await this.test();
+      console.log(2);
+    }
     change(e: string) {
       this.setState({
         value: e
@@ -44,6 +48,14 @@ export class Home extends React.Component<any, any> {
     close() {
       this.setState({
         showModal: false
+      })
+    }
+    async test() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(1);
+          resolve();
+        })
       })
     }
 }
