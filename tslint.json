@@ -11,7 +11,8 @@
     "prefer-const": false,
     "no-shadowed-variable": false,
     "no-var-requires": false,
-    "alphabetically": false
+    "alphabetically": false,
+    "interface-name": false
   },
   "linterOptions": {
     "exclude": [

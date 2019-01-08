@@ -1,37 +1,31 @@
 import * as React from 'react';
+import dy from '../../helper/dynamic.helper';
 import { Modal } from '../../component/modal/index';
-import Axios from 'axios';
 export class Home extends React.Component<any, any> {
     constructor(props: any) {
       super(props);
       this.state = {
         value: '',
-        showModal: false
+        showModal: false,
+        modal: (<Modal>
+          哈哈哈哈
+          <button onClick={this.close}>关闭</button>
+        </Modal>)
       }
       this.change = this.change.bind(this);
       this.showModal = this.showModal.bind(this);
       this.close = this.close.bind(this);
-      Axios.defaults.baseURL = 'http://localhost:3000';
-      Axios.get('home/list').then(data => {
-        console.log(data);
-      })
     }
     public render() {
-      const model =  this.state.showModal? (
-        <Modal>
-          哈哈哈哈
-          <button onClick={this.close}>关闭</button>
-        </Modal>
-      ): null
       return (
         <div className="hh">
             首页首页首页
             <button onClick={this.showModal}>点击</button>
-            {model}
         </div>
       );
     }
     async componentDidMount() {
+      console.log(this)
       await this.test();
       console.log(2);
     }
@@ -41,14 +35,12 @@ export class Home extends React.Component<any, any> {
       })
     }
     showModal() {
-      this.setState({
-        showModal: true
+      dy.open({
+        component: this.state.modal
       })
     }
     close() {
-      this.setState({
-        showModal: false
-      })
+      dy.destroyed();
     }
     async test() {
       return new Promise((resolve, reject) => {

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/react-router-dom": "^4.3.0",
+    "antd": "^3.12.1",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-jest": "^22.1.0",

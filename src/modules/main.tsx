@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './main.less';
 import { MainRouter } from '../router';
-import { NavFooter } from '../component/nav-footer/index';
+// import { NavFooter } from '../component/nav-footer/index';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 class Main extends React.Component<any, any>  {
@@ -14,7 +14,7 @@ class Main extends React.Component<any, any>  {
                 <Router history={createBrowserHistory()}>
                     <div className="main-content">
                         <MainRouter/>
-                        <NavFooter/>
+                        {/* <NavFooter/> */}
                     </div>
                 </Router>
             </div>
