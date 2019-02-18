@@ -9,6 +9,7 @@ import { Recommend } from '../modules/recommend';
 class MainRouter extends React.Component  {
     render() {
         return <Switch>
+                    <Route exact path='/' component={Home} />
                     <Route path='/home' component={Home} />
                     <Route path='/find' component={Find} />
                     <Route path='/recommend' component={Recommend} />

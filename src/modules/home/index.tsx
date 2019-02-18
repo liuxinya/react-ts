@@ -13,14 +13,14 @@ export class Home extends React.Component<any, any> {
         </Modal>)
       }
       this.change = this.change.bind(this);
-      this.showModal = this.showModal.bind(this);
+      this.openModal = this.openModal.bind(this);
       this.close = this.close.bind(this);
     }
     public render() {
       return (
         <div className="hh">
             首页首页首页
-            <button onClick={this.showModal}>点击</button>
+            <button onClick={this.openModal}>点击</button>
         </div>
       );
     }
@@ -34,7 +34,7 @@ export class Home extends React.Component<any, any> {
         value: e
       })
     }
-    showModal() {
+    openModal() {
       dy.open({
         component: this.state.modal
       })

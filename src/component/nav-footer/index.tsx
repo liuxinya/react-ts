@@ -25,6 +25,7 @@ export class NavFooter extends React.Component<any, INavFooterState> {
         this.setState({
             activeIndex: index
         })
+        // console.log(window.location, window.location.hash)
     }
     render() {
     const routerLink = 
