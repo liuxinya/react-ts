@@ -1,0 +1,30 @@
+.position-middle-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.position-middle-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.position-middle-x-y {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.clear-ul-pre {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.h(@val) {
+    height: @val;
+    line-height: @val;
+}
+.text-ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}

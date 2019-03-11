@@ -1,27 +1,47 @@
 
 import * as ReactDOM from 'react-dom';
+import { ReactElement } from 'react';
 class DynamicHelper {
-    dyContainer: any = null;
+    // dyContainer: any = null;
+    // open(options: DynamicHelperOptions) {
+    //     this.dyContainer = document.createElement('div');
+    //     if(options.selector) {
+    //         options.selector.appendChild(this.dyContainer);
+    //     }else {
+    //         document.body.appendChild(this.dyContainer);
+    //     }
+    //     return ReactDOM.render(options.component, this.dyContainer);
+    // }
+    // destroyed() {
+    //     if(this.dyContainer) {
+    //         ReactDOM.unmountComponentAtNode(this.dyContainer);
+    //         this.dyContainer.remove();
+    //         this.dyContainer = null;
+    //     }
+    // }
+    dyContainer: Map<any, Element> = new Map();
     open(options: DynamicHelperOptions) {
-        this.dyContainer = document.createElement('div');
+        let div = document.createElement('div');
         if(options.selector) {
-            options.selector.appendChild(this.dyContainer);
+            options.selector.appendChild(div);
         }else {
-            document.body.appendChild(this.dyContainer);
+            document.body.appendChild(div);
         }
-        console.log(ReactDOM.render(options.component, this.dyContainer));
+        this.dyContainer.set(options.component.type, div);
+        return ReactDOM.render(options.component, div);
     }
-    destroyed() {
-        if(this.dyContainer) {
-            ReactDOM.unmountComponentAtNode(this.dyContainer);
-            this.dyContainer.remove();
-            this.dyContainer = null;
+    destroyed(rct: any) {
+        let div = this.dyContainer.get(rct);
+        if(div) {
+            ReactDOM.unmountComponentAtNode(div);
+            div.remove();
+            this.dyContainer.delete(rct);
         }
     }
 }
-export default new DynamicHelper();
+const dy = new DynamicHelper();
+export { dy }; 
 interface DynamicHelperOptions {
-    component: JSX.Element;
-    props?: any;
+    component: ReactElement;
     selector?: HTMLDivElement;
 }

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import './main.less';
-import { MainRouter } from '../router';
-import { Router } from 'react-router';
-import { createBrowserHistory } from 'history';
-import { NavFooter } from 'src/component/nav-footer';
+import { IndexPage } from './pages/indexPage/index';
 class Main extends React.Component<any, any>  {
     constructor(props: any) {
         super(props)
@@ -11,12 +8,7 @@ class Main extends React.Component<any, any>  {
     render() {
         return (
             <div className="main-wrapper">
-                <Router history={createBrowserHistory()}>
-                    <div className="main-content">
-                        <MainRouter/>
-                        <NavFooter/>
-                    </div>
-                </Router>
+                <IndexPage/>
             </div>
         )
     }

@@ -1,0 +1,87 @@
+@import '../../common/styles/common.less';
+.nav-container {
+    .nav-content {
+        height: 50px;
+        line-height: 50px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid #ccc; 
+        z-index: 1;
+        .ul-wrapper {
+            box-sizing: border-box;
+            width: calc(100% - 45px);
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 8px;
+            ul {
+                .clear-ul-pre();
+                li {
+                    height: 100%;
+                    display: inline-block;
+                    margin: 0 10px;
+                    font-size: 16px;
+                    position: relative;
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 20px;
+                        height: 2px;
+                        background-color: #000;
+                        .position-middle-x();
+                        bottom: 6px;
+                        display: none;
+                    }
+                    &.active {
+                        color: #000;
+                        &::after {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        .arrow {
+            height: 100%;
+            width: 45px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: all .3s;
+            transform: rotateZ(0deg);
+            i {
+                .position-middle-x-y();
+            }
+            &.show-pannel {
+                transform: rotateZ(180deg);
+            }
+        }
+    }
+    .tab-pannel-content {
+        .tab-pannel {
+            padding: 10px 0px;
+            ul {
+                .clear-ul-pre();
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    width: 25%;
+                    height: 46px;
+                    line-height: 46px;
+                    text-align: center;
+                    span {
+                        display: inline-block;
+                        width: 70%;
+                        height: 36px;
+                        line-height: 36px;
+                        background-color: #eee;
+                        border-radius: 3px;
+                    }
+                    &.active {
+                        color: #ff8200;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import '../../../common/styles/common.less';
+.hot-search-wrapper {
+    ul {
+        .clear-ul-pre();
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            width: 50%;
+            .h(46px);
+            box-sizing: border-box;
+            font-size: 16px;
+            position: relative;
+            padding: 0 16px;
+            h4 {
+                display: inline-block;
+                max-width: 80%;
+               .text-ellipsis();
+            }
+            img {
+                width: 15px;
+                height: 15px;
+                margin: 0 4px;
+                .position-middle-y();
+            }
+        }
+    }
+}
