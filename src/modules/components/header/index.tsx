@@ -4,6 +4,7 @@ import { Icon } from 'antd';
 import { IndexStateObj } from './interface';
 import { dy } from 'src/helper/dynamic.helper';
 import { SearchPage } from '../../pages/searchPage/index';
+import { WrappedNormalLoginForm } from '../../pages/loginPage/index';
 export class Header extends React.Component<any, IndexStateObj> {
     constructor(props: any) {
         super(props)
@@ -16,7 +17,12 @@ export class Header extends React.Component<any, IndexStateObj> {
         dy.open({
             component: <SearchPage />
         })
-	}
+    }
+    editHandler = () => {
+        dy.open({
+            component: <WrappedNormalLoginForm />
+        })
+    }
     render() {
         return (
             <header>
@@ -26,7 +32,7 @@ export class Header extends React.Component<any, IndexStateObj> {
                 <div className="h-search">
 					<Search disabled={true} placeholder={this.state.hotWord} onClick={this.clickHander}/>
                 </div>
-				<div className="write-weibo">
+				<div onClick={this.editHandler} className="write-weibo">
 					<Icon type="edit" />
 				</div>
             </header>

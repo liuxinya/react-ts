@@ -109,5 +109,14 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "proxy": [
+    {
+      "context": ["/index"],
+      "target": "http://localhost:3000",
+      "changeOrigin": true,
+      "withCredentials": true,
+      "secure": false
+    }
+  ]
 }

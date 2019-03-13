@@ -4,7 +4,6 @@ import { Icon } from 'antd';
 import { Search } from '../../../component/search/index';
 import { dy } from 'src/helper/dynamic.helper';
 import { HotSearch } from '../../components/hot-search/index';
-
 export class SearchPage extends React.Component<any, any> {
     constructor(props: any) {
       super(props);
