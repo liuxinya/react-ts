@@ -11,7 +11,9 @@ class MainRouter extends React.Component  {
         return <Switch>
                     <Route exact path='/' component={Home} />
                     <Route path='/home' component={Home} />
-                    <Route path='/find' component={Find} />
+                    <Route path='/find' component={Find}>
+                        <Route path='/find/:id' component={Find} />
+                    </Route>
                     <Route path='/recommend' component={Recommend} />
                     <Route path='/rank' component={Rank} />
                 </Switch>
