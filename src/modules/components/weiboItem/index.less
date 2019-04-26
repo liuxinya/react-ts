@@ -1,0 +1,71 @@
+@import '../../../common/styles/common.less';
+.weibo-item-c {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    overflow: hidden;
+    .head {
+        display: flex;
+        .avator {
+            width: 50px;
+            box-sizing: border-box;
+            padding: 6px;
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        .title-c {
+            box-sizing: border-box;
+            padding-top: 6px;
+            h4 {
+                margin: 0;
+            }
+            span {
+                font-size: 12px;
+            }
+        }
+        .watch-btn {
+            flex: 1;
+            position: relative;
+            i, span{
+                position: absolute;
+                right: 16px;
+                top: 10px;
+            }
+            span {
+                // display: block;
+                border: 1px solid #ccc;
+                padding: 2px 10px;
+            }
+        }
+    }
+    .body {
+        .content {
+
+        }
+        .img-list {
+            display: flex;
+            flex-wrap: wrap;
+            .clear-ul-pre();
+            .img-wrap {
+                width: 33.333%;
+                box-sizing: border-box;
+                padding: 2px;
+                img {
+                    height: 122px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .foot {
+        padding: 8px 0 2px 0;
+        & > span {
+            margin-right: 28px;
+            i {
+                font-size: 16px;
+                margin-right: 2px;
+            }
+        }
+    }
+}

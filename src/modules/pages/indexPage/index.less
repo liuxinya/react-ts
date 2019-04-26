@@ -1,6 +1,10 @@
-
+@import '../../../common/styles/common.less';
 .index-container {
     padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    .fullScreen();
+    overflow: hidden;
     header {
         display: flex;
         div {
@@ -16,5 +20,9 @@
         div.h-search {
             flex: 1;
         }
+    }
+    .weibo-list {
+        flex: 1;
+        overflow: auto;
     }
 }

@@ -8,7 +8,7 @@ export class NavList extends React.Component<NavListPropsObj, NavListStateObj> {
         super(props);
         this.state = {
             activeItem: this.props.navList[0],
-            isShowPannel: false
+            isShowPannel: false,
         }
         this.clickHandler = this.clickHandler.bind(this);
         this.showTabPannel = this.showTabPannel.bind(this);
@@ -18,16 +18,22 @@ export class NavList extends React.Component<NavListPropsObj, NavListStateObj> {
             activeItem: item,
             isShowPannel: false
         })
+        this.props.wbTypeChange(item);
     }
     showTabPannel() {
         this.setState({
             isShowPannel: !this.state.isShowPannel
         })
     }
+    componentDidMount() {
+        if(this.props.navInitedHandler) {
+            this.props.navInitedHandler(this.state.activeItem);
+        }
+    }
     render() {
         const ul: JSX.Element = (
             <ul>
-                { this.props.navList.map(item => {
+                {  this.props.navList.map(item => {
                     return (
                         <li key={item.id} 
                             className={item.id === this.state.activeItem.id? 'active': ''} 

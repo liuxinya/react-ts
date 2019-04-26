@@ -1,0 +1,77 @@
+@import '../../../common/styles/common.less';
+.send-wb-wrapper {
+    .fullScreen();
+    background-color: #fff;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .head {
+        padding: 10px 16px;
+        text-align: center;
+        background-color: #fafafa;
+        color: #282f3c;
+        border-top-width: 0;
+        border-right-width: 0;
+        border-bottom-width: 1px;
+        border-left-width: 0;
+        border-color: #cfcfcf;
+        border-style: solid;
+        display: flex;
+        font-size: 16px;
+        span {
+            flex: 1;
+            &.back {
+                text-align: left;
+            }
+            &.send {
+                text-align: right;
+                i {
+                    font-style: normal;
+                }
+            }
+        }
+    }
+    .body {
+        flex: 1;
+        padding: 6px;
+        textarea {
+            border: none;
+            outline: none;
+            width: 100%;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .img-list {
+            display: flex;
+            flex-wrap: wrap;
+            .img-wrapper {
+                width: 33.333%;
+                box-sizing: border-box;
+                padding: 4px;
+                img {
+                    width: 100%;
+                    height: 122px;
+                }
+            }
+        }
+    }
+    .foot {
+        .h(45px);
+        padding: 0 10px;
+        span {
+            display: inline-block;
+            i.anticon-picture {
+                font-size: 25px;
+            }
+        }
+        input {
+            width: 30px;
+            .h(30px);
+            outline: none;
+            border: 1px solid #ccc;
+            float: right;
+        }
+    }
+}

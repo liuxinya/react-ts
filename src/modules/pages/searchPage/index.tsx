@@ -2,8 +2,9 @@ import * as React from 'react';
 import './index.less';
 import { Icon } from 'antd';
 import { Search } from '../../../component/search/index';
-import { dy } from 'src/helper/dynamic.helper';
 import { HotSearch } from '../../components/hot-search/index';
+import { DynamicService } from 'src/services/dynamic';
+import { Ioc } from 'qzx-ioc';
 export class SearchPage extends React.Component<any, any> {
     constructor(props: any) {
       super(props);
@@ -12,6 +13,7 @@ export class SearchPage extends React.Component<any, any> {
       this.backHander = this.backHander.bind(this);
     }
     backHander() {
+        let dy: DynamicService = Ioc(DynamicService);
         dy.destroyed(SearchPage);
     }
     public render() {

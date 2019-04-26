@@ -1,11 +1,13 @@
 import * as React from 'react';
 import './index.less';
-import { dy } from 'src/helper/dynamic.helper';
+import { Ioc } from 'qzx-ioc';
+import { DynamicService } from 'src/services/dynamic';
 export class DetailPage extends React.Component<any, any>  {
     constructor(props: any) {
         super(props)
     }
     close() {
+        let dy: DynamicService = Ioc(DynamicService);
         dy.destroyed(DetailPage)
     }
     render() {

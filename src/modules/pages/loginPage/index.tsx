@@ -1,20 +1,57 @@
 import * as React from 'react';
-import { Form, Input, Icon, Button } from 'antd';
+import { Form, Input, Icon, Button, message } from 'antd';
 import './index.less';
-import { dy } from 'src/helper/dynamic.helper';
+import { LoginInfoObject } from './interfacer';
+import { net } from 'src/services/net';
+import { ResData } from '../../../common/interface/resData';
+import { Ioc } from 'qzx-ioc';
+import { User } from 'src/common/model/user';
+import { UserObj } from '../../../common/model/user';
+import { DynamicService } from 'src/services/dynamic';
 export class LoginPage extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
     }
-    handleSubmit = (e: React.FormEvent) => {
+    login = (e: React.FormEvent) => {
         e.preventDefault();
-        this.props.form.validateFields((err: any, values: any) => {
-            if (!err) {
-              console.log('Received values of form: ', values);
+        net.post('/login', this.getValidateFields()).then((res: ResData<UserObj>) => {
+            if(res.data.succ) {
+                // 存用户信息
+                let user: User = Ioc(User);
+                user.setName(res.data.data.username);
+                user.setToken(res.data.data.token);
+                message.success(res.data.msg);
+                this.backHandler();
+            }else {
+                message.error(res.data.msg);
             }
         })
     }
+    register = () => {
+        net.post('/register', this.getValidateFields()).then((res: ResData<boolean>) => {
+            if(res.data.succ) {
+                message.success(res.data.msg);
+            }else {
+                message.error(res.data.msg);
+            }
+        })
+    }
+    getValidateFields(): LoginInfoObject {
+        let res: LoginInfoObject = null;
+        this.props.form.validateFields((err: any, values: LoginInfoObject) => {
+            if (err || !values.username || !values.password) {
+                message.error('请检查表单!');
+            }else {
+               res =  {
+                    username: values.username,
+                    password: values.password
+                }
+            }
+        })
+        return res;
+    }
     backHandler = () => {
+        let dy: DynamicService = Ioc(DynamicService);
         dy.destroyed(WrappedNormalLoginForm);
     }
     render() {
@@ -25,9 +62,9 @@ export class LoginPage extends React.Component<any, any> {
                     贼好看的logo
                 </div>
                 <div className="login-form">
-                    <Form onSubmit={this.handleSubmit} className="login-form">
+                    <Form className="login-form">
                         <Form.Item>
-                            {getFieldDecorator('userName', {
+                            {getFieldDecorator('username', {
                                 rules: [{ required: true, message: 'Please input your username!' }],
                             })(
                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
@@ -41,10 +78,10 @@ export class LoginPage extends React.Component<any, any> {
                             )}
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" className="login-form-button">
+                            <Button onClick={this.login} type="primary" htmlType="submit" className="login-form-button">
                                 登录
                             </Button>
-                            <Button type="primary" htmlType="submit" className="login-form-button">
+                            <Button onClick={this.register} type="primary" htmlType="submit" className="login-form-button">
                                 注册
                             </Button>
                         </Form.Item>

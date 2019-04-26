@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './index.less';
-import { dy } from 'src/helper/dynamic.helper';
 import { DetailPage } from '../../pages/detailPage/index';
+import { DynamicService } from 'src/services/dynamic';
+import { Ioc } from 'qzx-ioc';
 export class HotSearch extends React.Component<any, HotSearchStateObj>  {
     constructor(props: any) {
         super(props)
@@ -38,6 +39,7 @@ export class HotSearch extends React.Component<any, HotSearchStateObj>  {
         this.openDetailPage = this.openDetailPage.bind(this);
     }
     openDetailPage(item: HotSearchListItemObj) {
+        let dy: DynamicService = Ioc(DynamicService);
         dy.open({
             component: <DetailPage hotItem={item}/>
         })

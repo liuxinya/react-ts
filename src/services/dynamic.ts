@@ -1,7 +1,10 @@
 
+
 import * as ReactDOM from 'react-dom';
 import { ReactElement } from 'react';
-class DynamicHelper {
+import { Injectable } from 'qzx-ioc';
+@Injectable()
+class DynamicService {
     // dyContainer: any = null;
     // open(options: DynamicHelperOptions) {
     //     this.dyContainer = document.createElement('div');
@@ -39,8 +42,7 @@ class DynamicHelper {
         }
     }
 }
-const dy = new DynamicHelper();
-export { dy }; 
+export { DynamicService }; 
 interface DynamicHelperOptions {
     component: ReactElement;
     selector?: HTMLDivElement;

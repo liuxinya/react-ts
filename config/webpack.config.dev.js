@@ -180,6 +180,12 @@ module.exports = {
                   importLoaders: 1,
                 },
               },
+              // {
+              //   loader: 'px2rem-loader',
+              //   options: {
+              //     remUnit: 75
+              //   }
+              // },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
@@ -202,7 +208,7 @@ module.exports = {
               },
               {
                 loader: require.resolve('less-loader') // compiles Less to CSS
-              }
+              },
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.

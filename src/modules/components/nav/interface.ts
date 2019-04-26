@@ -1,8 +1,9 @@
+
 export interface NavStateObj {
     navList: NavListItemObj[];
 } 
 export interface NavListItemObj {
-    id: string;
+    id: number;
     name: string;
     [prop: string]: any;
 }
