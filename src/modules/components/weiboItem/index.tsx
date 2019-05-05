@@ -10,6 +10,8 @@ import { net } from 'src/services/net';
 import { User } from 'src/common/model/user';
 // import { ReactElement } from 'react';
 import { removeFromArrayByIndex } from '../../../helper/array';
+import { DynamicService } from 'src/services/dynamic';
+import { DetailPage } from '../../pages/detailPage/index';
 export class WeiBoItem extends React.Component<any, WeiBoItemComponentStateObj> { 
     constructor(props: any) {
         super(props)
@@ -39,6 +41,13 @@ export class WeiBoItem extends React.Component<any, WeiBoItemComponentStateObj> 
                 message.error('删除失败');
             }
         }
+    }
+    openDetail(item: WeiboItemObj) {
+        console.log(item)
+        let dy: DynamicService = Ioc(DynamicService);
+        dy.open({
+            component: <DetailPage currItem={item}/>
+        })
     }
     render() {
         let menu = (id: string, index: number) => {
@@ -76,7 +85,7 @@ export class WeiBoItem extends React.Component<any, WeiBoItemComponentStateObj> 
                             </div>
                         </div>
                         <div className="body">
-                            <div className="content">
+                            <div onClick={this.openDetail.bind(this, item)} className="content">
                                 {item.content}
                             </div>
                             <ul className="img-list">
@@ -90,7 +99,7 @@ export class WeiBoItem extends React.Component<any, WeiBoItemComponentStateObj> 
                                 <Icon type="interation" />
                                 1.2万
                             </span>
-                            <span className='msg'>
+                            <span onClick={this.openDetail.bind(this, item)} className='msg'>
                                 <Icon type="message" />
                                 1万
                             </span>

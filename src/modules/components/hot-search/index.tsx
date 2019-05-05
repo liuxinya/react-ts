@@ -3,32 +3,12 @@ import './index.less';
 import { DetailPage } from '../../pages/detailPage/index';
 import { DynamicService } from 'src/services/dynamic';
 import { Ioc } from 'qzx-ioc';
+import { WeiboItemObj } from '../weiboItem/interface';
 export class HotSearch extends React.Component<any, HotSearchStateObj>  {
     constructor(props: any) {
         super(props)
         this.state = {
-            hotSearchList: [
-                {
-                    name: '三生三世而我却',
-                    type: 0,
-                    id: '123',
-                },
-                {
-                    name: '二二二二恶',
-                    type: 1,
-                    id: '456',
-                },
-                {
-                    name: '休息休息',
-                    type: 2,
-                    id: '789',
-                },
-                {
-                    name: '嘻嘻嘻嘻嘻',
-                    type: 3,
-                    id: '12sds3',
-                },
-            ],
+            hotSearchList: ['爱的供养', '选择远方便不顾风雨兼程', '有后悔的时间不如丰富自己的羽翼'],
             imgSrc:[
                 'http://simg.s.weibo.com/20180921110904_fei_28_0921.png',
                 'http://simg.s.weibo.com/20180816102634_re_28_0816.png',
@@ -38,10 +18,10 @@ export class HotSearch extends React.Component<any, HotSearchStateObj>  {
         }
         this.openDetailPage = this.openDetailPage.bind(this);
     }
-    openDetailPage(item: HotSearchListItemObj) {
+    openDetailPage(item: WeiboItemObj) {
         let dy: DynamicService = Ioc(DynamicService);
         dy.open({
-            component: <DetailPage hotItem={item}/>
+            component: <DetailPage currItem={item}/>
         })
     }
     openRankList() {
@@ -52,11 +32,11 @@ export class HotSearch extends React.Component<any, HotSearchStateObj>  {
             <div className="hot-search-wrapper">
                 <ul>
                     {
-                        this.state.hotSearchList.map((item: HotSearchListItemObj) => {
+                        this.state.hotSearchList.map((item: string, index) => {
                             return (
-                                <li key={item.id} onClick={() => {this.openDetailPage(item)}}>
-                                    <h4>{item.name}</h4>
-                                    <img src={this.state.imgSrc[item.type]} alt=""/>
+                                <li key={index}>
+                                    <h4>{item}</h4>
+                                    <img src={this.state.imgSrc[Math.round(Math.random() * 2)]} alt=""/>
                                 </li>
                             )
                         })
@@ -72,11 +52,6 @@ export class HotSearch extends React.Component<any, HotSearchStateObj>  {
     } 
 }
 export interface HotSearchStateObj {
-    hotSearchList: HotSearchListItemObj[];
+    hotSearchList: string[];
     imgSrc: string[];
-}
-export interface HotSearchListItemObj {
-    name: string;
-    type: number;
-    id: string;
 }
