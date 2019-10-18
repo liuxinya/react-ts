@@ -12,7 +12,8 @@
     "no-shadowed-variable": false,
     "no-var-requires": false,
     "alphabetically": false,
-    "interface-name": false
+    "interface-name": false,
+    "jsx-no-lambda": false
   },
   "linterOptions": {
     "exclude": [

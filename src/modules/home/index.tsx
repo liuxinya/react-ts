@@ -1,6 +1,22 @@
-import * as React from 'react';
+import React, { useState }from 'react';
 import dy from '../../helper/dynamic.helper';
 import { Modal } from '../../component/modal/index';
+function Test() {
+  const [count, setCount] = useState(0)
+  let aa = () => {
+    setCount(count + 1)
+    console.log(setCount, useState)
+
+  }
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={aa}>
+        Click me
+      </button>
+    </div>
+  );
+}
 export class Home extends React.Component<any, any> {
     constructor(props: any) {
       super(props);
@@ -21,6 +37,7 @@ export class Home extends React.Component<any, any> {
         <div className="hh">
             首页首页首页
             <button onClick={this.openModal}>点击</button>
+            <Test />
         </div>
       );
     }
