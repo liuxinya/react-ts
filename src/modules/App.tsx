@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
-import './App.less';
 import { hot } from 'react-hot-loader/root';
-import { Button } from 'antd';
+import React from 'react';
+import './App.less'
+import { Header } from './PageBlock/Header/header';
+import { Menus } from './PageBlock/Menus/Menus';
+import { RightContent } from './PageBlock/RightContent/RightContent';
 
-const App = () => {
-    const [test, setTest] = useState(0)
-    console.log(888999)
+export function App() {
     return (
-        <div>
-            <Button type='danger' onClick={() => setTest(test + 1)}>12312</Button>
-            { test }
+        <div className='app-container'>
+            <div className="header-container">
+                <Header />
+            </div>
+            <div className="body-container">
+                <div className="left-menu-container">
+                    <Menus/>
+                </div>
+                <div className="right-content-container">
+                    <RightContent/>
+                </div>
+            </div>
         </div>
     )
-};
-
+}
 const AppHot = process.env.NODE_ENV === 'development' ? hot(App) : App
 
 export default AppHot;

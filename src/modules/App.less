@@ -1,3 +1,25 @@
-.App {
-  text-align: left;
+
+.app-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .header-container {
+    height: 50px;
+    line-height: 50px;
+    background-color: orange;
+  }
+  .body-container {
+    flex: 1;
+    display: flex;
+    .left-menu-container {
+      width: 200px;
+      background-color: gold;
+    }
+    .right-content-container {
+      flex: 1;
+      background-color: pink;
+    }
+  }
 }
