@@ -5,11 +5,14 @@ import App from './modules/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './common/store/redux';
+import { Provider as KeepAlivePrivoder} from 'react-keep-alive';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <KeepAlivePrivoder>
+          <App />
+      </KeepAlivePrivoder>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

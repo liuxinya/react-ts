@@ -10,6 +10,8 @@ const addCustomize = () => config => {
     return config
 }
 
+require('./color.js')
+
 module.exports = override(
     fixBabelImports('import', {
         libraryName: 'antd',
@@ -18,7 +20,6 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
-        modifyVars: { '@primary-color': '#1890ff' },
     }),
     addCustomize()
 );

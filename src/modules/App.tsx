@@ -4,21 +4,26 @@ import './App.less'
 import { Header } from './PageBlock/Header/header';
 import { Menus } from './PageBlock/Menus/Menus';
 import { RightContent } from './PageBlock/RightContent/RightContent';
+import { Router } from 'react-router';
+import { createBrowserHistory } from 'history';
 
 export function App() {
     return (
         <div className='app-container'>
-            <div className="header-container">
-                <Header />
-            </div>
-            <div className="body-container">
-                <div className="left-menu-container">
-                    <Menus/>
+
+            <Router history={createBrowserHistory()}>
+                <div className="header-container">
+                    <Header />
                 </div>
-                <div className="right-content-container">
-                    <RightContent/>
+                <div className="body-container">
+                    <div className="left-menu-container">
+                        <Menus/>
+                    </div>
+                    <div className="right-content-container">
+                        <RightContent/>
+                    </div>
                 </div>
-            </div>
+            </Router>
         </div>
     )
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 // import enUS from 'antd/es/locale/en_US';
 // import zhCN from 'antd/es/locale/zh_CN';
-import { store } from '../../common/store/redux';
+// import { store } from '../../common/store/redux';
 // import { UserInfoStore } from '../../common/store/user';
 // import { Ioc } from 'qzx-ioc';
 // import moment from 'moment';
@@ -14,7 +14,7 @@ export function Test() {
     // let userInfo: UserInfoStore = Ioc(UserInfoStore)
     return (
         <div>
-            { store.getState().testData ? '哈哈哈哈' : '呵呵呵呵呵' }
+            Test
         </div>
     )
 }
