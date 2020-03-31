@@ -4,8 +4,6 @@ import './index.less'
 // import { createBrowserHistory } from 'history';
 import { MainRouter } from '../../../router/MainRouter';
 
-
-
 export function RightContent() {
     // const aa = () => {
 

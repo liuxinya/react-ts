@@ -11,9 +11,12 @@ export class UNetService {
     constructor() {
         this.init()
     }
-    init() {
+    private init() {
         Axios.defaults.timeout = TIME_OUT
         Axios.defaults.baseURL = isProd() ? BASE_URL_PROD : BASE_URL_DEV
+    }
+    setHeader(key: string, value: string | boolean) {
+        Axios.defaults.headers.common[key] = value;
     }
     get<T, K>(url: string, params?: T, config: AxiosRequestConfig = {}): Promise<StatusObject<K>> {
         config.params = params
@@ -31,7 +34,7 @@ export class UNetService {
         config.params = params
         return this.sendData<T, K>('put', url, config.params)
     }
-    sendData<T, K>(methods: NetMethods, url: string, config: AxiosRequestConfig | T = {}): Promise<StatusObject<K>> {
+    private sendData<T, K>(methods: NetMethods, url: string, config: AxiosRequestConfig | T = {}): Promise<StatusObject<K>> {
         return new Promise(async (resolve, reject) => {
             try {
                 // @ts-ignore

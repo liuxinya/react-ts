@@ -1,42 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Menu } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { UserInfoObj } from '../../../common/interface/common';
+import { language } from '../../../common/helpers/language';
+import { treeData, TreeDataObj } from '../../../common/config/menus';
+import './index.less'
 
-export function Menus() {
+export function MenusTem(props: {
+    user?: UserInfoObj,
+    treeData?: TreeDataObj[],
+    mode?: any
+}) {
+    console.log(props)
+    const [menusData] = useState(props.treeData || treeData)
     const handleClick = (e: any) => {
         console.log('click ', e);
+        e.item.node.click()
+        
+    }
+    const renderMenuItem = (tree: TreeDataObj[] | undefined) => {
+        if (tree && tree.length > 0) {
+            return tree.map(item => {
+                    return (
+                        <Menu.Item key={item.key}>
+                            { item.route ?  <Link to={item.route}>{language(item.title)}</Link> : language(item.title)}
+                        </Menu.Item>
+                    )
+            })
+        } else {
+            return null
+        }
     }
     return (
         <div className="menus-wrapper">
             <Menu
                 onClick={handleClick}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode="inline"
+                mode={props.mode || 'inline'}
+                theme={props.user && props.user.isLightTheme ? 'light' : 'dark'}
             >
-                <SubMenu
-                    key="sub1"
-                    title={
-                        <span>
-                            <span>Navigation One</span>
-                        </span>
-                    }
-                >
-                    <Menu.ItemGroup key="g1" title="Item 1">
-                    <Menu.Item key="1">
-                        <Link to='/test'>test1</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                        <Link to='/test2'>test2</Link>
-                    </Menu.Item>
-                    </Menu.ItemGroup>
-                    <Menu.ItemGroup key="g2" title="Item 2">
-                    <Menu.Item key="3">Option 3</Menu.Item>
-                    <Menu.Item key="4">Option 4</Menu.Item>
-                    </Menu.ItemGroup>
-                </SubMenu>
+                {
+                    menusData.map(item => {
+                        return (
+                            <SubMenu
+                                key={item.key}
+                                title={language(item.title)}
+                            >
+                                { renderMenuItem(item.children) }
+                            </SubMenu>
+                        )
+                    })
+                }
             </Menu>
         </div>
     )
 }
+export const Menus =  connect(state => state)(MenusTem)

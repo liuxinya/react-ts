@@ -12,3 +12,10 @@ export interface PageResponseObject<T> {
     totalCount: number,
     result: T
 }
+export interface UserInfoObj {
+    isCNLanguage: boolean,
+    isLightTheme: boolean
+}
+export interface ReduxStoreStateObj {
+    user: UserInfoObj
+}

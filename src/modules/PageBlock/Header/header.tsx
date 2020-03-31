@@ -1,8 +1,10 @@
 import React from 'react';
 import './index.less'
-import { Switch, message } from 'antd';
+import { Switch } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import { UUserService } from '../../../common/services/user';
+import { Ioc } from 'qzx-ioc';
 
 const userMenus = (
     <Menu>
@@ -13,38 +15,12 @@ const userMenus = (
 )
 
 export function Header() {
-    const changeTheme = (e: any) => {
-        if (e) {
-            // @ts-ignore
-            console.log(window['less']) 
-            // @ts-ignore
-            window.less.modifyVars(
-                {
-                  '@primary-color': '#aaa',
-                }
-              )
-              .then(() => { 
-                message.success('主题切换成功')
-              })
-              .catch((error: any) => {
-                message.error(`主题切换失败`);
-                console.log(error)
-              });
-        } else {
-            // @ts-ignore
-            window.less.modifyVars(
-                {
-                    '@primary-color': '#1DA57A',
-                }
-              )
-              .then(() => { 
-                message.success('主题切换成功')
-              })
-              .catch((error: any) => {
-                message.error(`主题切换失败`);
-                console.log(error)
-              });
-        }
+    const userService: UUserService = Ioc(UUserService);
+    const changeTheme = () => {
+        userService.changeTheme()
+    }
+    const ChangeLanguage = () => {
+        userService.chageLanguage()
     }
     return (
         <div className="header-wrapper">
@@ -56,7 +32,7 @@ export function Header() {
                 </Dropdown>
             </div>
             <div className="language-change">
-                <Switch checkedChildren="EN" unCheckedChildren="CN" defaultChecked />
+                <Switch onClick={ChangeLanguage} checkedChildren="CN" unCheckedChildren="EN" defaultChecked />
                 <Switch onClick={changeTheme} checkedChildren="D" unCheckedChildren="N" defaultChecked />
             </div>
         </div>

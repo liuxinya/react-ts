@@ -2,11 +2,6 @@ const { override, fixBabelImports, addLessLoader } = require('customize-cra');
 
 const addCustomize = () => config => {
     config.output.publicPath = process.env.NODE_ENV === 'production' ? '' : '/';
-    // let tem = config.module.rules
-    // config.module.rules = [
-    //     ...tem,
-
-    // ]
     return config
 }
 

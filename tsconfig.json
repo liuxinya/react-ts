@@ -22,7 +22,8 @@
     "noEmit": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "noImplicitThis": false
   },
   "exclude": [
     "node_modules",

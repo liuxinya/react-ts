@@ -4,9 +4,9 @@ import { Input, Button } from 'antd';
 export function Test2() {
     return (
         <div>
-            test2222
+            1901281028
             <Input placeholder='aa'></Input>
-            <Button type='primary'>kaskk</Button>
+            <Button type='primary'>kask1k</Button>
         </div>
     )
 }
