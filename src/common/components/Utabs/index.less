@@ -1,3 +1,40 @@
 .u-tabs {
     height: 100%;
+    user-select: none;
+    overflow: hidden;
+    width: 100%;
+    background-color: #aaa;
+    .u-tabs-container {
+        display: flex;
+        width: 100%;
+        overflow: auto;
+        height: 50px;
+        li {
+            vertical-align: middle;
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px 0 14px;
+            cursor: pointer;
+            margin-right: 2px;
+            background-color: #fff;
+            font-size: 12px;
+            white-space: nowrap;
+            span.close {
+                font-size: 14px;
+                opacity: 0;
+                margin-left: 2px;
+                transition: opacity .3s;
+            }
+            &:hover {
+                color: @primary-color;
+                .close {
+                    opacity: 1;
+                }
+            }
+            &.active {
+                background-color: @primary-color;
+                color: #fff;
+            }
+        }
+    }
 }

@@ -1,8 +1,11 @@
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 
-const addCustomize = () => config => {
+const addCustomize = () => (config, env) => {
     config.output.publicPath = process.env.NODE_ENV === 'production' ? '' : '/';
-    return config
+    config = rewireReactHotLoader(config, env);
+    return config;
+
 }
 
 require('./color.js')
@@ -15,6 +18,7 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
+        modifyVars: { '@primary-color': '#1DA57A' },
     }),
     addCustomize()
 );

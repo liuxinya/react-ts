@@ -1,10 +1,11 @@
 import { UserInfoObj } from '../interface/common';
-export const UserInfo: UserInfoObj = {
-    isCNLanguage: true,
+import { localGetItem } from '../helpers/localStorage';
+export const userInfo: UserInfoObj = {
+    isCNLanguage: localGetItem('isCNLanguage') === 'false' ? false : true,
     isLightTheme: true
 }
 
-export const UserInfoAction: UserInfoAction = {
+export const userInfoAction: UserInfoActionObj = {
     'CHANGE_LANGUAGE': (user: UserInfoObj) => {
         return {isCNLanguage: !user.isCNLanguage}
     },
@@ -13,7 +14,7 @@ export const UserInfoAction: UserInfoAction = {
     }
 }
 
-export interface UserInfoAction {
+export interface UserInfoActionObj {
     'CHANGE_LANGUAGE': (p: UserInfoObj) => UserInfoActionReturn,
     'CHANGE_THEME': (p: UserInfoObj) => UserInfoActionReturn,
 }

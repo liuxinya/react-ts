@@ -4,7 +4,8 @@ import { Switch } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { UUserService } from '../../../common/services/user';
-import { Ioc } from 'qzx-ioc';
+import { Ioc } from '../../../common/helpers/injectable';
+import { store } from '../../../common/store/redux';
 
 const userMenus = (
     <Menu>
@@ -15,11 +16,13 @@ const userMenus = (
 )
 
 export function Header() {
-    const userService: UUserService = Ioc(UUserService);
+    // const userService: UUserService = Ioc(UUserService);
     const changeTheme = () => {
+        const userService: UUserService = Ioc(UUserService);
         userService.changeTheme()
     }
     const ChangeLanguage = () => {
+        const userService: UUserService = Ioc(UUserService);
         userService.chageLanguage()
     }
     return (
@@ -32,7 +35,11 @@ export function Header() {
                 </Dropdown>
             </div>
             <div className="language-change">
-                <Switch onClick={ChangeLanguage} checkedChildren="CN" unCheckedChildren="EN" defaultChecked />
+                <Switch onClick={ChangeLanguage}
+                        checkedChildren="CN"
+                        unCheckedChildren="EN"
+                        defaultChecked={store.getState().user.isCNLanguage}
+                />
                 <Switch onClick={changeTheme} checkedChildren="D" unCheckedChildren="N" defaultChecked />
             </div>
         </div>

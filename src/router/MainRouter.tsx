@@ -3,7 +3,7 @@ import { Test2 } from '../modules/test/test2';
 import { Switch, Route } from 'react-router';
 import React from 'react';
 import { KeepAlive } from 'react-keep-alive';
-import { ShopManagement } from '../modules/ShopManagement/index';
+import { ShopManagement } from '../modules/ShopManagement/ShopManagement';
 import { isProd } from '../common/helpers/env';
 
 export function MainRouter() {

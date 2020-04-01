@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader';
 import React from 'react';
 import './App.less'
 import { Header } from './PageBlock/Header/header';
@@ -6,11 +6,11 @@ import { Menus } from './PageBlock/Menus/Menus';
 import { RightContent } from './PageBlock/RightContent/RightContent';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
+import { isProd } from '../common/helpers/env';
 
 export function App() {
     return (
         <div className='app-container'>
-
             <Router history={createBrowserHistory()}>
                 <div className="header-container">
                     <Header />
@@ -27,6 +27,6 @@ export function App() {
         </div>
     )
 }
-const AppHot = process.env.NODE_ENV === 'development' ? hot(App) : App
+const AppHot = !isProd() ? hot(module)(App) : App
 
 export default AppHot;

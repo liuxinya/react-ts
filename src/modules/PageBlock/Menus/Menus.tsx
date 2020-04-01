@@ -5,24 +5,25 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { UserInfoObj } from '../../../common/interface/common';
 import { language } from '../../../common/helpers/language';
-import { treeData, TreeDataObj } from '../../../common/config/menus';
 import './index.less'
+import { MenusDataObj, menusData } from '../../../common/config/menus';
+import { UEventEmitter } from '../../../common/services/eventEmitter';
+import { Ioc } from '../../../common/helpers/injectable';
 
 export function MenusTem(props: {
     user?: UserInfoObj,
-    treeData?: TreeDataObj[],
+    treeData?: MenusDataObj[],
     mode?: any
 }) {
-    console.log(props)
-    const [menusData] = useState(props.treeData || treeData)
+    const [menus] = useState(props.treeData || menusData)
     const handleClick = (e: any) => {
         console.log('click ', e);
-        e.item.node.click()
-        
+        let event: UEventEmitter = Ioc(UEventEmitter)
+        event.emit('menuClick', e)
     }
-    const renderMenuItem = (tree: TreeDataObj[] | undefined) => {
-        if (tree && tree.length > 0) {
-            return tree.map(item => {
+    const renderMenuItem = (_menus: MenusDataObj[] | undefined) => {
+        if (_menus && _menus.length > 0) {
+            return _menus.map(item => {
                     return (
                         <Menu.Item key={item.key}>
                             { item.route ?  <Link to={item.route}>{language(item.title)}</Link> : language(item.title)}
@@ -36,12 +37,13 @@ export function MenusTem(props: {
     return (
         <div className="menus-wrapper">
             <Menu
-                onClick={handleClick}
+                onSelect={handleClick}
+                defaultSelectedKeys={['shopManagement']}
                 mode={props.mode || 'inline'}
                 theme={props.user && props.user.isLightTheme ? 'light' : 'dark'}
             >
                 {
-                    menusData.map(item => {
+                    menus.map(item => {
                         return (
                             <SubMenu
                                 key={item.key}

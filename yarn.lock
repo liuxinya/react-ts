@@ -9306,13 +9306,6 @@ querystringify@^2.1.1:
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
 
-qzx-ioc@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/qzx-ioc/-/qzx-ioc-1.1.6.tgz#e42705afaeb9ead5747bba8e2e040fe8e26ed95f"
-  integrity sha512-FdtntKn3NeEuX+jXZsfSLGvKYOdShEvvLl2hLcwx0p01rFGQP1CeLaPBh4pL6usm6qQc5yb2mQ9xEJWebzmC7Q==
-  dependencies:
-    reflect-metadata "^0.1.12"
-
 raf@^3.4.0, raf@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
@@ -10010,7 +10003,7 @@ redux@^4.0.0, redux@^4.0.5:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-reflect-metadata@^0.1.12:
+reflect-metadata@^0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==

@@ -11,7 +11,7 @@
         "arrow-parens": false,
         "curly": true,
         "eofline": false,
-        "forin": true,
+        "forin": false,
         "indent": [
             true,
             "spaces",
@@ -104,10 +104,6 @@
         "radix": true,
         "switch-default": true,
         "trailing-comma": false,
-        "variable-name": [
-            true,
-            "allow-pascal-case"
-        ],
         "no-string-literal": false,
         "no-require-imports": true,
         "only-arrow-functions": [

@@ -1,12 +1,12 @@
 import { createStore } from 'redux'
 import { ReduxStoreStateObj } from '../interface/common';
-import { UserInfo, UserInfoAction } from './userStore';
+import { userInfo, UserInfoActionObj, userInfoAction } from './userStore';
 
 const initData: ReduxStoreStateObj = {
-    user: UserInfo
+    user: userInfo
 }
 const AllActions: AllActionsObj = {
-    user: UserInfoAction
+    user: userInfoAction
 }
 
 const reducer = (state = initData, action: StoreAction) => {
@@ -21,7 +21,7 @@ const reducer = (state = initData, action: StoreAction) => {
                         // @ts-ignore
                         ...state[key],
                         // @ts-ignore
-                        ...obj[action.type](state[key])
+                        ...obj[action.type](state[key], action.payload || null)
                     }
                 }
             }
@@ -33,10 +33,11 @@ const reducer = (state = initData, action: StoreAction) => {
 export const store = createStore(reducer)
 
 export interface AllActionsObj extends Object {
-    user: UserInfoAction
+    user: UserInfoActionObj
 }
 
 type StoreAction = {
     type: string,
+    payload?: any;
     [props: string]: any
 }

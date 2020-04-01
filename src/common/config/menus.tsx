@@ -1,5 +1,5 @@
 // import * as React from 'react';
-export const treeData: TreeDataObj[] = [
+export const menusData: MenusDataObj[] = [
     {
         title: '主档管理',
         key: 'mainFileManagement',
@@ -20,10 +20,11 @@ export const treeData: TreeDataObj[] = [
     },
 ];
 
-export interface TreeDataObj {
+export interface MenusDataObj {
     title: string,
     key: string,
     icon?: string,
     route?: string,
-    children?: TreeDataObj[]
+    children?: MenusDataObj[],
+    [props: string]: any
 }

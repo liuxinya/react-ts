@@ -23,7 +23,8 @@
     "jsx": "react",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitThis": false
+    "noImplicitThis": false,
+    "strictNullChecks": false
   },
   "exclude": [
     "node_modules",

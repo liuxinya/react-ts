@@ -1,10 +1,10 @@
-import { Injectable } from 'qzx-ioc'
 import { isProd } from '../helpers/env';
 import { StatusObject } from '../interface/common';
 import { message } from 'antd';
 import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { isString } from 'util';
 import { BASE_URL_PROD, BASE_URL_DEV, TIME_OUT } from '../constant/axios-default';
+import { Injectable } from '../helpers/injectable';
 
 @Injectable()
 export class UNetService {
