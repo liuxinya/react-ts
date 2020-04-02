@@ -4,7 +4,7 @@ import { message } from 'antd';
 import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { isString } from 'util';
 import { BASE_URL_PROD, BASE_URL_DEV, TIME_OUT } from '../constant/axios-default';
-import { Injectable } from '../helpers/injectable';
+import { Injectable } from 'qzx-ioc';
 
 @Injectable()
 export class UNetService {

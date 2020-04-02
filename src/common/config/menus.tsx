@@ -12,9 +12,9 @@ export const menusData: MenusDataObj[] = [
                 key: 'shopManagement',
             },
             {
-                title: 'test',
-                route: '/test2',
-                key: '0-0-1',
+                title: '商家管理',
+                route: '/businessManagement',
+                key: 'businessManagement',
             },
         ],
     },

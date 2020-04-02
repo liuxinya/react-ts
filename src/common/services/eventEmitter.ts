@@ -1,4 +1,4 @@
-import { Injectable } from '../helpers/injectable';
+import { Injectable } from 'qzx-ioc';
 
 @Injectable()
 export class UEventEmitter {

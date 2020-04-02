@@ -4,9 +4,15 @@ import { themeColor } from '../config/theme.color'
 import { store } from '../store/redux';
 import { localSetItem } from '../helpers/localStorage';
 import { UNetService } from './net';
-import { Injectable, Ioc } from '../helpers/injectable';
+import { Injectable } from 'qzx-ioc';
 @Injectable()
 export class UUserService {
+    constructor (
+        private net: UNetService
+    ) {
+        
+    }
+    
     isCNLanguage: boolean = true
     changeTheme() {
         // @ts-ignore
@@ -28,7 +34,6 @@ export class UUserService {
         })
         this.isCNLanguage = store.getState().user.isCNLanguage
         localSetItem('isCNLanguage', this.isCNLanguage)
-        let net: UNetService = Ioc(UNetService)
-        net.setHeader('isCNLanguage', this.isCNLanguage)
+        this.net.setHeader('isCNLanguage', this.isCNLanguage)
     }
 }

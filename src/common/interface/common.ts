@@ -19,3 +19,8 @@ export interface UserInfoObj {
 export interface ReduxStoreStateObj {
     user: UserInfoObj
 }
+
+export interface ReduxStoreAction {
+    type: string;
+    [props: string]: any
+}

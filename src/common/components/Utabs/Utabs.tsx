@@ -33,7 +33,7 @@ function UTabsTem(props: {
             <ul className="u-tabs-container">
                 { tabsData.map((item) => {
                     return (
-                        <li className={currTab.key === item.key && "active"}  onClick={() => clickHandler(item)}>
+                        <li key={item.key} className={currTab.key === item.key && "active"}  onClick={() => clickHandler(item)}>
                             <span>{language(item.title)}</span>
                             <span onClick={e => closeHandler(e, item)} className='close'>×</span>
                         </li>

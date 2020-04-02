@@ -1,4 +1,4 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports, addLessLoader, useBabelRc } = require('customize-cra');
 const rewireReactHotLoader = require('react-app-rewire-hot-loader');
 
 const addCustomize = () => (config, env) => {
@@ -20,5 +20,6 @@ module.exports = override(
         javascriptEnabled: true,
         modifyVars: { '@primary-color': '#1DA57A' },
     }),
-    addCustomize()
+    addCustomize(),
+    useBabelRc()
 );

@@ -1,6 +1,6 @@
+import { Ioc } from 'qzx-ioc';
 import { UNetService } from '../services/net';
 import { localGetItem } from '../helpers/localStorage';
-import { Ioc } from '../helpers/injectable';
 
 export function projectInit() {
     // 拿到用户信息

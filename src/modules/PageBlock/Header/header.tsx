@@ -4,8 +4,8 @@ import { Switch } from 'antd';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { UUserService } from '../../../common/services/user';
-import { Ioc } from '../../../common/helpers/injectable';
 import { store } from '../../../common/store/redux';
+import { Ioc } from 'qzx-ioc';
 
 const userMenus = (
     <Menu>

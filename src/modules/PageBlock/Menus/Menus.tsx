@@ -8,7 +8,7 @@ import { language } from '../../../common/helpers/language';
 import './index.less'
 import { MenusDataObj, menusData } from '../../../common/config/menus';
 import { UEventEmitter } from '../../../common/services/eventEmitter';
-import { Ioc } from '../../../common/helpers/injectable';
+import { Ioc } from 'qzx-ioc';
 
 export function MenusTem(props: {
     user?: UserInfoObj,
@@ -16,8 +16,11 @@ export function MenusTem(props: {
     mode?: any
 }) {
     const [menus] = useState(props.treeData || menusData)
-    const handleClick = (e: any) => {
-        console.log('click ', e);
+    const addDomToMenus = (item: MenusDataObj) => {
+        item.dom = React.createRef();
+        return item.dom
+    }
+    const clickTemDom = (e) => {
         let event: UEventEmitter = Ioc(UEventEmitter)
         event.emit('menuClick', e)
     }
@@ -26,7 +29,16 @@ export function MenusTem(props: {
             return _menus.map(item => {
                     return (
                         <Menu.Item key={item.key}>
-                            { item.route ?  <Link to={item.route}>{language(item.title)}</Link> : language(item.title)}
+                            {
+                                item.route ?
+                                <Link to={item.route}>
+                                    {language(item.title)}
+                                    <div onClick={() => clickTemDom(item)}
+                                    ref={addDomToMenus(item)}
+                                    className='tem-div'/>
+                                </Link> :
+                                language(item.title)
+                            }
                         </Menu.Item>
                     )
             })
@@ -37,7 +49,6 @@ export function MenusTem(props: {
     return (
         <div className="menus-wrapper">
             <Menu
-                onSelect={handleClick}
                 defaultSelectedKeys={['shopManagement']}
                 mode={props.mode || 'inline'}
                 theme={props.user && props.user.isLightTheme ? 'light' : 'dark'}

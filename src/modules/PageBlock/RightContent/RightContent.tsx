@@ -8,7 +8,7 @@ import { removeFromArrayByCondition } from '../../../common/helpers/array';
 import { message } from 'antd';
 import { UEventEmitter } from '../../../common/services/eventEmitter';
 import { menusData, MenusDataObj } from '../../../common/config/menus';
-import { Ioc } from '../../../common/helpers/injectable';
+import { Ioc } from 'qzx-ioc';
 
 export function RightContent() {
     const [tabsData, setTabsData] = useState([menusData[0].children[0]])
@@ -36,6 +36,7 @@ export function RightContent() {
     useEffect(() => {
         let event: UEventEmitter = Ioc(UEventEmitter)
         event.on('menuClick', e => {
+            console.log(e)
             let currMenuItem = findItembyKeyInMenusData(e.key)
             setCurrMenu(currMenuItem)
             if (currMenuItem) {
@@ -43,7 +44,7 @@ export function RightContent() {
                     if (!isHaveItemInTabsData(data, currMenuItem)) {
                         data.push({
                             ...currMenuItem,
-                            dom: e.item.node
+                            dom: e.dom.current
                         })
                     }
                     return [...data]
@@ -62,8 +63,16 @@ export function RightContent() {
         }
     }
     const clickTabHandler = (e: UTabsObj) => {
-        console.log(e, '阿斯达')
-        e && e.dom && e.dom.click()
+        console.log(e, typeof e.dom, '阿斯达')
+        try {
+            if (e && e.dom && e.dom.current) {
+                e.dom.current.click()
+            } else if (e && e.dom ) {
+                e.dom.click()
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
