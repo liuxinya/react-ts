@@ -1,1 +1,3 @@
-export interface Test1PropsObj {}
+export interface Test1PropsObj {
+    test: any;
+}

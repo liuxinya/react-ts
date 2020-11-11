@@ -1,5 +1,5 @@
 module.exports = {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 2017,
         sourceType: 'module',
@@ -22,6 +22,26 @@ module.exports = {
     // 以当前目录为根目录，不再向上查找 .eslintrc.js
     root: true,
     rules: {
+        // 这是对类的检测  关闭有关修饰符所有的限制
+        '@typescript-eslint/explicit-member-accessibility': [
+            'error',
+            {
+                accessibility: 'no-public',
+                overrides: {
+                    accessors: 'explicit',
+                    constructors: 'no-public',
+                    methods: 'off',
+                    properties: 'off',
+                    parameterProperties: 'off'
+                }
+            }
+        ],
+        // 类属性或方法必须按字母顺序排序
+        '@typescript-eslint/member-ordering': 'off',
+        // 关闭值的不可推断
+        '@typescript-eslint/no-inferrable-types': 'off',
+        // 关闭类型定义必须用 interface 而不能用type
+        '@typescript-eslint/consistent-type-definitions': 'off',
         //
         //
         // 可能的错误
@@ -438,14 +458,7 @@ module.exports = {
             }
         ],
         // 变量必须先定义后使用
-        'no-use-before-define': [
-            'error',
-            {
-                functions: false,
-                classes: false,
-                variables: false
-            }
-        ],
+        'no-use-before-define': 'off',
 
 
 
