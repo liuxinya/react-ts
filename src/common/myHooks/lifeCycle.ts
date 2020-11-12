@@ -1,3 +1,7 @@
+/**
+ * 通用的生命周期
+ */
+
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 /**

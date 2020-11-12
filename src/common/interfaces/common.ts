@@ -32,8 +32,8 @@ export interface UserInfoObj {
 }
 
 // redux action
-export interface ReduxStoreAction<T = null> {
-    type: string;
-    data: T;
+export interface ReduxStoreAction<T, K = null> {
+    type: keyof T;
+    data: K;
     [props: string]: any
 }

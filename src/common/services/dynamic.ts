@@ -1,3 +1,9 @@
+/**
+ * 一个组件的服务
+ * 作用： 可以快速在你想要的位置打开一个组件，减少组件show: true false这种写法
+ */
+
+
 import { Injectable } from '@baidu/ioc';
 import ReactDOM from 'react-dom';
 import { isTrue } from '../helper/type';
