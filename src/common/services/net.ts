@@ -4,7 +4,9 @@ import { isProd } from '../helper/env';
 import { httpConfig } from '../config/http';
 import { ResponseObj, ResponseMsgObj } from '../interfaces/common';
 import { isString, isObject } from '../helper/type';
+import { Injectable } from '@baidu/ioc';
 
+@Injectable()
 export class UNetService {
     constructor() {
         this.init();
@@ -13,7 +15,7 @@ export class UNetService {
         Axios.defaults.timeout = httpConfig.timeout;
         Axios.defaults.baseURL = isProd() ? httpConfig.urlProd : httpConfig.urlDev;
     }
-    public setHeader(key: string, value: string | boolean) {
+    static setHeader(key: string, value: string | boolean) {
         Axios.defaults.headers.common[key] = value;
     }
     get<T, K>(url: string, params?: T, config: AxiosRequestConfig = {}): Promise<ResponseObj<K>> {

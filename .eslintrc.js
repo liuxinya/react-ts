@@ -42,6 +42,15 @@ module.exports = {
         '@typescript-eslint/no-inferrable-types': 'off',
         // 关闭类型定义必须用 interface 而不能用type
         '@typescript-eslint/consistent-type-definitions': 'off',
+        // 可以在 class constructors 里面使用 private 修饰符
+        '@typescript-eslint/no-parameter-properties': [
+            'error',
+            {
+                allows: ['private']
+            }
+        ],
+        // render dom 不能做为返回项
+        'react/no-render-return-value': 'off',
         //
         //
         // 可能的错误

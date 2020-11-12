@@ -5,7 +5,13 @@ import App from './modules/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './common/store/redux';
+import { Ioc } from '@baidu/ioc';
+import { UDynamicService } from './common/services/dynamic';
+import { Test1 } from './modules/Test1/Test1';
 
+Ioc(UDynamicService).open({
+    component: <Test1/>,
+});
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

@@ -341,10 +341,10 @@
     "@babel/helper-create-class-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-proposal-decorators@7.12.1":
+"@babel/plugin-proposal-decorators@7.12.1", "@babel/plugin-proposal-decorators@^7.12.1":
   version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.12.1.tgz#59271439fed4145456c41067450543aee332d15f"
-  integrity sha512-knNIuusychgYN8fGJHONL0RbFxLGawhXOJNLBk75TniTsZZeA+wdkDuv6wp4lGwzQEKjZi6/WYtnb3udNPmQmQ==
+  resolved "http://registry.npm.baidu-int.com/@babel%2fplugin-proposal-decorators/-/plugin-proposal-decorators-7.12.1.tgz#59271439fed4145456c41067450543aee332d15f"
+  integrity sha1-WScUOf7UFFRWxBBnRQVDruMy0V8=
   dependencies:
     "@babel/helper-create-class-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
@@ -1002,6 +1002,14 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-transform-typescript" "^7.12.1"
 
+"@babel/preset-typescript@^7.12.1":
+  version "7.12.1"
+  resolved "http://registry.npm.baidu-int.com/@babel%2fpreset-typescript/-/preset-typescript-7.12.1.tgz#86480b483bb97f75036e8864fe404cc782cc311b"
+  integrity sha1-hkgLSDu5f3UDbohk/kBMx4LMMRs=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.10.4"
+    "@babel/plugin-transform-typescript" "^7.12.1"
+
 "@babel/runtime-corejs3@^7.10.2":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.1.tgz#51b9092befbeeed938335a109dbe0df51451e9dc"
@@ -1056,6 +1064,14 @@
     "@babel/helper-validator-identifier" "^7.10.4"
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
+
+"@baidu/ioc@^1.0.0":
+  version "1.0.0"
+  resolved "http://registry.npm.baidu-int.com/@baidu%2fioc/-/ioc-1.0.0.tgz#24aabecb2688a11e9c7b957516adf7f7c6ede688"
+  integrity sha512-7Rzym3/A9ognb3Dp4UFQToD5I5NT90dXbpE7XIvtLBw+/UM05Dk60mvID9kozLx+zL+jySaxoMw5AR+scvLiwQ==
+  dependencies:
+    reflect-metadata "^0.1.12"
+    typescript "^4.0.2"
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
@@ -2652,6 +2668,11 @@ babel-loader@8.1.0:
     pify "^4.0.1"
     schema-utils "^2.6.5"
 
+babel-plugin-add-react-displayname@^0.0.5:
+  version "0.0.5"
+  resolved "http://registry.npm.baidu-int.com/babel-plugin-add-react-displayname/-/babel-plugin-add-react-displayname-0.0.5.tgz#339d4cddb7b65fd62d1df9db9fe04de134122bd5"
+  integrity sha1-M51M3be2X9YtHfnbn+BN4TQSK9U=
+
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.3.3.tgz#84fda19c976ec5c6defef57f9427b3def66e17a3"
@@ -2711,6 +2732,13 @@ babel-plugin-transform-react-remove-prop-types@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.24.tgz#f2edaf9b4c6a5fbe5c1d678bfb531078c1555f3a"
   integrity sha512-eqj0hVcJUR57/Ug2zE1Yswsw4LhuqqHhD+8v120T1cl3kjg76QwtyBrdIk4WVwK+lAhBJVYCd/v+4nc4y+8JsA==
+
+babel-plugin-transform-typescript-metadata@^0.3.1:
+  version "0.3.1"
+  resolved "http://registry.npm.baidu-int.com/babel-plugin-transform-typescript-metadata/-/babel-plugin-transform-typescript-metadata-0.3.1.tgz#d86599b7139131ba5e917f5f568d0c824a5cdfc3"
+  integrity sha1-2GWZtxORMbpekX9fVo0Mgkpc38M=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
 
 babel-preset-current-node-syntax@^0.1.3:
   version "0.1.4"
@@ -9996,6 +10024,11 @@ redux@^4.0.0:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
+reflect-metadata@^0.1.12:
+  version "0.1.13"
+  resolved "http://registry.npm.baidu-int.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha1-Z648pXyXKiqhZCsQ/jY/4y1J3Ag=
+
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
@@ -11570,7 +11603,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.5:
+typescript@^4.0.2, typescript@^4.0.5:
   version "4.0.5"
   resolved "http://registry.npm.baidu-int.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
   integrity sha1-rp3d/RBp8ctb6z7zshcN18EzI4k=
