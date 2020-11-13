@@ -1,10 +1,14 @@
-import { Rule } from 'antd/lib/form';
+import { ModalProps } from 'antd/lib/modal/Modal';
+import { Rule, FormProps } from 'antd/lib/form';
 import { InputProps } from 'antd/lib/input';
 import { SelectProps } from 'antd/lib/select';
 import { ButtonProps } from 'antd/lib/button';
 import { RangePickerProps } from 'antd/lib/date-picker/generatePicker';
 import { DatePickerProps } from 'antd/lib/date-picker';
 import { Moment } from 'moment';
+import { RowProps } from 'antd/lib/row';
+import { ColProps } from 'antd/lib/col';
+import React from 'react';
 
 export type ResponseMsgObj = {
     detail: any,
@@ -71,4 +75,21 @@ export interface UFormDataObj {
     ButtonProps?: BtnProps,
     DatePickerProps?: DatePickerProps,
     RangePickerProps?: RangePickerProps<Moment>,
+}
+
+export interface UFormPropsObj extends FormProps {
+    data: UFormDataObj[],
+    RowProps?: RowProps,
+    ColProps?: ColProps
+}
+
+export interface UFormModalPropsObj {
+    modalProps: Omit<ModalProps, 'onOk'> & {
+        onOk?: (p: {
+            e: React.MouseEvent<HTMLElement>,
+            close: () => void
+        }) => void;
+    },
+    formData: UFormDataObj[],
+    formProps?: UFormPropsObj,
 }

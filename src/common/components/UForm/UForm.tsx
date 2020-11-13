@@ -3,21 +3,13 @@
  */
 import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col, DatePicker } from 'antd';
-import { UFormDataObj } from '../../interfaces/common';
+import { UFormDataObj, UFormPropsObj } from '../../interfaces/common';
 import { Uselect } from '../Uselect/Uselect';
-import { FormProps } from 'antd/lib/form';
-import { RowProps } from 'antd/lib/row';
-import { ColProps } from 'antd/lib/col';
 const { RangePicker } = DatePicker;
 
-interface UFormProps extends FormProps {
-    data: UFormDataObj[],
-    RowProps?: RowProps,
-    ColProps?: ColProps
-}
 
-export function UForm(propsTem: UFormProps) {
-    const [props] = useState<UFormProps>(() => {
+export function UForm(propsTem: UFormPropsObj) {
+    const [props] = useState<UFormPropsObj>(() => {
         return {
             labelCol: { span: 8 },
             wrapperCol: { span: 16 },

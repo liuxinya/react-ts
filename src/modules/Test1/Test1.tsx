@@ -4,8 +4,11 @@ import { useOnMount, useOnUpdate } from '../../common/myHooks/lifeCycle';
 import { store } from '../../common/store/redux';
 import { Button, Form } from 'antd';
 // import { Uselect } from '../../common/components/Uselect/Uselect';
-import { UFormDataObj } from '../../common/interfaces/common';
+import { UFormDataObj, UFormModalPropsObj } from '../../common/interfaces/common';
 import { UForm } from '../../common/components/UForm/UForm';
+import { UDynamicService } from '../../common/services/dynamic';
+import { Ioc } from '@baidu/ioc';
+import { UFormModal } from '../../common/components/UFormModal/UFormModal';
 
 export function Test1(props: any, context: any) {
     const [age, setAge] = useState<number>(() => {
@@ -52,28 +55,43 @@ export function Test1(props: any, context: any) {
             }
         }
     }, {
-        // label: '哈哈哈',
         type: 'RangePicker',
+        label: 'asdas',
         RangePickerProps: {
             onChange: e => {
                 console.log(e[0].toLocaleString());
             }
         }
     }, {
-        // label: '哈哈哈',
         type: 'DatePicker',
+        label: 'asdasdzsd',
         DatePickerProps: {
             onChange: e => {
                 console.log(e.valueOf());
             }
         }
     }, {
-        // label: '哈哈哈',
         type: 'Button',
         ButtonProps: {
             text: '按时打算',
             onClick: () => {
-                console.log(form.validateFields());
+                const dy: UDynamicService = Ioc(UDynamicService);
+                const div = dy.open<UFormModalPropsObj>({
+                    component: UFormModal,
+                    props: {
+                        modalProps: {
+                            title: '123123',
+                            onCancel: () => {
+                                dy.destroyed(div);
+                            },
+                            onOk: e => {
+                                e.close();
+                                dy.destroyed(div);
+                            }
+                        },
+                        formData: testFormData
+                    }
+                });
             }
         }
     }];
