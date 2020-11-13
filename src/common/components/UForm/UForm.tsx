@@ -1,88 +1,88 @@
 /**
  * 最初设想， 传递一个json就能渲染出form表单
  */
-import React from 'react';
-import { Form, Input, Button } from 'antd';
-import { ColProps } from 'antd/lib/col';
+import React, { useState } from 'react';
+import { Form, Input, Button, Row, Col, DatePicker } from 'antd';
 import { UFormDataObj } from '../../interfaces/common';
 import { Uselect } from '../Uselect/Uselect';
+import { FormProps } from 'antd/lib/form';
+import { RowProps } from 'antd/lib/row';
+import { ColProps } from 'antd/lib/col';
+const { RangePicker } = DatePicker;
 
-export function UForm(props: {
+interface UFormProps extends FormProps {
     data: UFormDataObj[],
-    layout?: {
-        labelCol: ColProps,
-        wrapperCol: ColProps,
-    }
-} = {
-    data: [],
-    layout: {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
-    }
-}) {
-    const getPropsVal = (item: UFormDataObj, attr: string) => {
-        // @ts-ignore
-        return item.props && item.props[attr] ? item.props[attr] : null;
-    };
-    const getOnEvent = (item: UFormDataObj, event: string, e: any) => {
-        // @ts-ignore
-        return item.on && item.on[event] ? item.on[event](e, item) : null;
-    };
+    RowProps?: RowProps,
+    ColProps?: ColProps
+}
+
+export function UForm(propsTem: UFormProps) {
+    const [props] = useState<UFormProps>(() => {
+        return {
+            labelCol: { span: 8 },
+            wrapperCol: { span: 16 },
+            // 默认一行摆一个
+            ColProps: {
+                span: 24
+            },
+            ...propsTem
+        };
+    });
     const renderFormByType = (item: UFormDataObj) => {
         switch (item.type) {
             case 'Input':
                 return (
-                    <Input
-                        onChange={e => getOnEvent(item, 'change', e)}
-                        size={getPropsVal(item, 'size')}
-                        placeholder={getPropsVal(item, 'placeholder')}
-                        defaultValue={getPropsVal(item, 'defaultValue')}
-                    />
+                    <Input {...item.InputProps}/>
                 );
             case 'Select':
                 return (
-                    <Uselect
-                        defaultValue={getPropsVal(item, 'defaultValue')}
-                        onChange={e => getOnEvent(item, 'change', e)}
-                        data={item.props.data} />
+                    <Uselect { ...item.SelectProps }/>
                 );
             case 'Button':
                 return (
-                    <Button
-                        type={getPropsVal(item, 'buttonType')}
-                        size={getPropsVal(item, 'size')}
-                        icon={getPropsVal(item, 'icon')}
-                        onClick={e => getOnEvent(item, 'click', item)}
-                    >
-                        { item.title}
+                    <Button {...item.ButtonProps}>
+                        { item.ButtonProps.text}
                     </Button>
+                );
+            case 'RangePicker':
+                return (
+                    <RangePicker {...item.RangePickerProps}/>
+                );
+            case 'DatePicker':
+                return (
+                    <DatePicker {...item.DatePickerProps}/>
                 );
             default:
                 return null;
         }
     };
     const renderChildForm = () => {
+        // 考虑外界可以快速摆放表单，这里增加了栅格
         return (
-            props.data.map((item, index) => {
-                return (
-                    <Form.Item
-                        key={index}
-                        label={item.label}
-                        name={item.name}
-                        rules={item.rules}
-                    >
-                        {renderFormByType(item)}
-                    </Form.Item>
-                );
-            })
+            <Row {...props.RowProps}>
+                {
+                    props.data.map((item, index) => {
+                        return (
+                            <Col key={index} {...props.ColProps}>
+                                <Form.Item
+                                    label={item.label}
+                                    name={item.name}
+                                    rules={item.rules}
+                                >
+                                    {renderFormByType(item)}
+                                </Form.Item>
+                            </Col>
+                        );
+                    })
+                }
+            </Row>
         );
     };
     return (
         <div className="u-form">
             <Form
-                {...props.layout}
+                {...props}
                 name="basic"
-                initialValues={{ remember: true }}
             >
                 { renderChildForm() }
             </Form>

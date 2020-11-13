@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { UselectDataObj } from '../../interfaces/common';
 import { Select } from 'antd';
+import { SelectProps } from 'antd/lib/select';
 
 const { Option } = Select;
 
-export function Uselect(props: {
+interface UselectProps<VT> extends SelectProps<VT> {
     data: UselectDataObj[],
-    defaultValue?: any,
     style?: React.CSSProperties,
-    disabled?: boolean,
-    onChange?: (value: any, option: any) => void,
-} = {
-    data: [],
-    disabled: false
-}) {
+}
+
+export function Uselect(props: UselectProps<string| number>) {
     const [data, setData] = useState<UselectDataObj[]>(props.data);
 
     // 有可能外界，异步的去改变了 data
@@ -22,13 +19,9 @@ export function Uselect(props: {
             setData([...props.data]);
         }
     }, [props.data]);
-
-    const handleChange = (value: any, option: any) => {
-        console.log(value, option);
-    };
     return (
         <div className="u-select" style={{ width: '100%', ...props.style }}>
-            <Select disabled={props.disabled} defaultValue={props.defaultValue || null} style={{ width: '100%' }} onChange={handleChange}>
+            <Select {...props}>
                 {
                     data.map(item => {
                         return (

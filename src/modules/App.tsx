@@ -5,27 +5,25 @@ import './App.less';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { MainRouter } from '../router/mainRouter';
-import { Link } from 'react-router-dom';
+import { Menu } from './PageBlocks/Menu/Menu';
+import { Header } from './PageBlocks/Header/Header';
+import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 
 function App() {
     return (
         <div className="app-container">
             <Router history={createBrowserHistory()}>
                 <div className="left-menu">
-                    菜单
-                    <div className="test-menu">
-                        <Link to="/test1">test1test1test1test1test1</Link>
-                    </div>
-                    <div className="test-menu">
-                        <Link to="/test2">test2test2test2test2test2</Link>
-                    </div>
+                    <Menu />
                 </div>
                 <div className="right-content">
-                    <header>
-                        头部已打开菜单
-                    </header>
+                    <div className="header">
+                        <Header />
+                    </div>
                     <div className="content">
-                        <MainRouter />
+                        <ErrorBoundary>
+                            <MainRouter />
+                        </ErrorBoundary>
                     </div>
                 </div>
             </Router>

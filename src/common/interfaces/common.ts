@@ -1,7 +1,10 @@
-import { ButtonType } from 'antd/lib/button';
-import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import { Rule } from 'antd/lib/form';
-import React from 'react';
+import { InputProps } from 'antd/lib/input';
+import { SelectProps } from 'antd/lib/select';
+import { ButtonProps } from 'antd/lib/button';
+import { RangePickerProps } from 'antd/lib/date-picker/generatePicker';
+import { DatePickerProps } from 'antd/lib/date-picker';
+import { Moment } from 'moment';
 
 export type ResponseMsgObj = {
     detail: any,
@@ -52,22 +55,20 @@ export interface UselectDataObj {
 }
 
 // form表单data
+interface SelProps extends SelectProps<string | number> {
+    data: UselectDataObj[]
+}
+interface BtnProps extends ButtonProps {
+    text: string
+}
 export interface UFormDataObj {
-    type: 'Input' | 'Button' | 'Select',
+    type: 'Input' | 'Button' | 'Select' | 'DatePicker' | 'RangePicker',
     label?: string,
     name?: string,
-    title?: string,
     rules?: Rule[],
-    props?: {
-        data?: UselectDataObj[],
-        size?: SizeType,
-        placeholder?: string,
-        defaultValue?: string | number,
-        icon?: React.ReactNode,
-        buttonType?: ButtonType
-    }
-    on?: {
-        click?: () => void,
-        change?: (event: React.ChangeEvent<HTMLInputElement>, item: UFormDataObj) => void,
-    }
+    InputProps?: InputProps,
+    SelectProps?: SelProps,
+    ButtonProps?: BtnProps,
+    DatePickerProps?: DatePickerProps,
+    RangePickerProps?: RangePickerProps<Moment>,
 }
