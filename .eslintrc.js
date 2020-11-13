@@ -22,6 +22,8 @@ module.exports = {
     // 以当前目录为根目录，不再向上查找 .eslintrc.js
     root: true,
     rules: {
+        // 取消不能链式书写表达式 类似 a.b && a.b()
+        '@typescript-eslint/prefer-optional-chain': 'off',
         // 这是对类的检测  关闭有关修饰符所有的限制
         '@typescript-eslint/explicit-member-accessibility': [
             'error',

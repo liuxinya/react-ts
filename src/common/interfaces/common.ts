@@ -1,3 +1,8 @@
+import { ButtonType } from 'antd/lib/button';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
+import { Rule } from 'antd/lib/form';
+import React from 'react';
+
 export type ResponseMsgObj = {
     detail: any,
     global: string
@@ -36,4 +41,33 @@ export interface ReduxStoreAction<T, K = null> {
     type: keyof T;
     data: K;
     [props: string]: any
+}
+
+// 下拉数据
+export interface UselectDataObj {
+    title: string,
+    value: string | number,
+    disabled?: boolean,
+    [props: string]: any,
+}
+
+// form表单data
+export interface UFormDataObj {
+    type: 'Input' | 'Button' | 'Select',
+    label?: string,
+    name?: string,
+    title?: string,
+    rules?: Rule[],
+    props?: {
+        data?: UselectDataObj[],
+        size?: SizeType,
+        placeholder?: string,
+        defaultValue?: string | number,
+        icon?: React.ReactNode,
+        buttonType?: ButtonType
+    }
+    on?: {
+        click?: () => void,
+        change?: (event: React.ChangeEvent<HTMLInputElement>, item: UFormDataObj) => void,
+    }
 }
