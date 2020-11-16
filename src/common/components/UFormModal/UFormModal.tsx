@@ -27,7 +27,7 @@ export function UFormModal(props: UFormModalPropsObj) {
             onOk={e => okHandler(e)}
             visible={isShow}
         >
-            <UForm {...props.formProps} data={props.formData}/>
+            <UForm {...props.formProps} data={props.formProps.data}/>
         </Modal>
     );
 }

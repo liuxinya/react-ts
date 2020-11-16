@@ -90,6 +90,5 @@ export interface UFormModalPropsObj {
             close: () => void
         }) => void;
     },
-    formData: UFormDataObj[],
     formProps?: UFormPropsObj,
 }

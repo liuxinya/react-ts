@@ -89,7 +89,9 @@ export function Test1(props: any, context: any) {
                                 dy.destroyed(div);
                             }
                         },
-                        formData: testFormData
+                        formProps: {
+                            data: testFormData
+                        },
                     }
                 });
             }
